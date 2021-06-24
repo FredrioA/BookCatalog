@@ -1,0 +1,87 @@
+com/example/bookcatalog/databinding/FragmentFeedBinding.java
+ com.example.bookcatalog.databinding.FragmentFeedBinding
+com/example/bookcatalog/databinding/ActivityBookDetailsBinding.java
+ com.example.bookcatalog.databinding.ActivityBookDetailsBinding
+com/example/bookcatalog/room/FavoriteBooksDatabase.java
+ com.example.bookcatalog.room.FavoriteBooksDatabase
+ com.example.bookcatalog.room.FavoriteBooksDatabase$1
+com/example/bookcatalog/databinding/FragmentFavoritesBinding.java
+ com.example.bookcatalog.databinding.FragmentFavoritesBinding
+com/example/bookcatalog/BuildConfig.java
+ com.example.bookcatalog.BuildConfig
+com/example/bookcatalog/databinding/BookRvItemBinding.java
+ com.example.bookcatalog.databinding.BookRvItemBinding
+com/example/bookcatalog/views/activities/BookDetailsActivity.java
+ com.example.bookcatalog.views.activities.BookDetailsActivity
+ com.example.bookcatalog.views.activities.BookDetailsActivity$1
+com/example/bookcatalog/retrofit/IBookService.java
+ com.example.bookcatalog.retrofit.IBookService
+com/example/bookcatalog/models/BookShelfModel.java
+ com.example.bookcatalog.models.BookShelfModel
+com/example/bookcatalog/models/BookPriceInfoModel.java
+ com.example.bookcatalog.models.BookPriceInfoModel
+ com.example.bookcatalog.models.BookPriceInfoModel$1
+com/example/bookcatalog/utils/AppConstants.java
+ com.example.bookcatalog.utils.AppConstants
+com/example/bookcatalog/repository/BooksRepository.java
+ com.example.bookcatalog.repository.BooksRepository
+ com.example.bookcatalog.repository.BooksRepository$1
+ com.example.bookcatalog.repository.BooksRepository$InsertFavoriteBookAsyncTask
+ com.example.bookcatalog.repository.BooksRepository$RemoveFavoriteBookAsyncTask
+com/example/bookcatalog/room/BookTableDAO.java
+ com.example.bookcatalog.room.BookTableDAO
+com/example/bookcatalog/views/activities/MainActivity.java
+ com.example.bookcatalog.views.activities.MainActivity
+ com.example.bookcatalog.views.activities.MainActivity$1
+com/example/bookcatalog/room/BookTable.java
+ com.example.bookcatalog.room.BookTable
+com/example/bookcatalog/views/fragments/FavoritesFragment.java
+ com.example.bookcatalog.views.fragments.FavoritesFragment
+ com.example.bookcatalog.views.fragments.FavoritesFragment$1
+ com.example.bookcatalog.views.fragments.FavoritesFragment$2
+ com.example.bookcatalog.views.fragments.FavoritesFragment$2$1
+ com.example.bookcatalog.views.fragments.FavoritesFragment$3
+ com.example.bookcatalog.views.fragments.FavoritesFragment$4
+ com.example.bookcatalog.views.fragments.FavoritesFragment$5
+com/example/bookcatalog/views/fragments/FeedFragment.java
+ com.example.bookcatalog.views.fragments.FeedFragment
+ com.example.bookcatalog.views.fragments.FeedFragment$1
+ com.example.bookcatalog.views.fragments.FeedFragment$2
+ com.example.bookcatalog.views.fragments.FeedFragment$2$1
+ com.example.bookcatalog.views.fragments.FeedFragment$3
+ com.example.bookcatalog.views.fragments.FeedFragment$4
+com/example/bookcatalog/repository/AllBooksDataSourceFactory.java
+ com.example.bookcatalog.repository.AllBooksDataSourceFactory
+com/example/bookcatalog/viewmodels/BooksViewModel.java
+ com.example.bookcatalog.viewmodels.BooksViewModel
+com/example/bookcatalog/models/BookInfoModel.java
+ com.example.bookcatalog.models.BookInfoModel
+ com.example.bookcatalog.models.BookInfoModel$1
+com/example/bookcatalog/models/BookSaleInfoModel.java
+ com.example.bookcatalog.models.BookSaleInfoModel
+ com.example.bookcatalog.models.BookSaleInfoModel$1
+com/example/bookcatalog/adapters/FeedBooksAdapter.java
+ com.example.bookcatalog.adapters.FeedBooksAdapter
+ com.example.bookcatalog.adapters.FeedBooksAdapter$1
+ com.example.bookcatalog.adapters.FeedBooksAdapter$FeedBooksViewHolder
+ com.example.bookcatalog.adapters.FeedBooksAdapter$FeedBooksViewHolder$1
+ com.example.bookcatalog.adapters.FeedBooksAdapter$IBookClicked
+com/example/bookcatalog/adapters/FavoriteBooksAdapter.java
+ com.example.bookcatalog.adapters.FavoriteBooksAdapter
+ com.example.bookcatalog.adapters.FavoriteBooksAdapter$FavoritesViewHolder
+ com.example.bookcatalog.adapters.FavoriteBooksAdapter$IBookClicked
+com/example/bookcatalog/repository/AllBooksDataSource.java
+ com.example.bookcatalog.repository.AllBooksDataSource
+ com.example.bookcatalog.repository.AllBooksDataSource$1
+ com.example.bookcatalog.repository.AllBooksDataSource$2
+ com.example.bookcatalog.repository.AllBooksDataSource$3
+com/example/bookcatalog/models/BookCoverLinksModel.java
+ com.example.bookcatalog.models.BookCoverLinksModel
+ com.example.bookcatalog.models.BookCoverLinksModel$1
+com/example/bookcatalog/retrofit/BooksServiceClient.java
+ com.example.bookcatalog.retrofit.BooksServiceClient
+com/example/bookcatalog/databinding/ActivityMainBinding.java
+ com.example.bookcatalog.databinding.ActivityMainBinding
+com/example/bookcatalog/models/BookModel.java
+ com.example.bookcatalog.models.BookModel
+ com.example.bookcatalog.models.BookModel$1

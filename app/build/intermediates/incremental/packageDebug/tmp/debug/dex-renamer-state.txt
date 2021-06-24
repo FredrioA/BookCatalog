@@ -1,0 +1,4 @@
+#Wed Jun 23 20:25:43 ICT 2021
+base.0=E\:\\AjarCoding\\Sem6\\AndroidProject\\BookCatalog\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

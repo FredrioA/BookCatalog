@@ -1,0 +1,127 @@
+package com.example.bookcatalog.repository;
+
+
+import android.app.Application;
+import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+
+import com.example.bookcatalog.retrofit.IBookService;
+import com.example.bookcatalog.models.BookModel;
+import com.example.bookcatalog.retrofit.BooksServiceClient;
+import com.example.bookcatalog.room.BookTable;
+import com.example.bookcatalog.room.BookTableDAO;
+import com.example.bookcatalog.room.FavoriteBooksDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+public class BooksRepository {
+    //retrofit
+    private final IBookService booksApi;
+
+    //room
+    private MutableLiveData<List<BookModel>> favoriteBooks;
+    private BookTableDAO bookTableDAO;
+
+    //Constructor
+    public BooksRepository(Application application) {
+        booksApi = BooksServiceClient.getBookService();
+        favoriteBooks = new MutableLiveData<>();
+
+        FavoriteBooksDatabase database =
+                FavoriteBooksDatabase.getInstance(application.getApplicationContext());
+        bookTableDAO = database.bookTableDAO();
+    }
+
+    //Get Favorite Books IDs from Local DataBase (room)
+    public LiveData<List<BookTable>> getFavoriteBooksIdsFromLocal() {
+        return bookTableDAO.getAllFavoriteBooks();
+    }
+
+    //Use Favorite Books IDs to get API information about them
+    public LiveData<List<BookModel>> getAllFavoriteBooksFromAPI(List<BookTable> bookIds) {
+        List<BookModel> finalFavoriteBooksList = new ArrayList<>();
+
+        for (BookTable favBook : bookIds) {
+            Call<BookModel> call = booksApi.getBookByID("v1/volumes/" + favBook.getBookID());
+
+            call.enqueue(new Callback<BookModel>() {
+                @Override
+                public void onResponse(Call<BookModel> call, Response<BookModel> response) {
+                    if (!response.isSuccessful()) {
+                        return;
+                    }
+                    finalFavoriteBooksList.add(new BookModel(response.body().getId(),
+                            response.body().getBookInfo(),
+                            response.body().getBookSaleInfo()));
+
+                    favoriteBooks.postValue(finalFavoriteBooksList);
+                }
+
+                @Override
+                public void onFailure(Call<BookModel> call, Throwable t) {
+                }
+            });
+
+        }
+
+        return favoriteBooks;
+    }
+
+    //Checks if the book exists in the local database (room)
+    public LiveData<BookTable> checkIfFavoriteBookExistsLocally(String bookID) {
+        return bookTableDAO.getFavoriteBookByID(bookID);
+    }
+
+    //Insert new Favorite book into local database (room)
+    public void insertFavoriteBook(BookTable bookTable) {
+        new InsertFavoriteBookAsyncTask(bookTableDAO).execute(bookTable);
+    }
+
+    //Remove Favorite
+    public void removeFavoriteBookByID(String bookID) {
+        new RemoveFavoriteBookAsyncTask(bookTableDAO).execute(bookID);
+    }
+
+    //Asynctask Class for inserting a favorite Book
+    private static class InsertFavoriteBookAsyncTask extends AsyncTask<BookTable, Void, Void> {
+
+        private BookTableDAO bookTableDAO;
+
+        private InsertFavoriteBookAsyncTask(BookTableDAO bookTableDAO) {
+            this.bookTableDAO = bookTableDAO;
+        }
+
+        @Override
+        protected Void doInBackground(BookTable... bookTables) {
+            bookTableDAO.insertFavorite(bookTables[0]);
+            return null;
+        }
+    }
+
+    //Asynctask Class for removing a favorite Book
+    private static class RemoveFavoriteBookAsyncTask extends AsyncTask<String, Void, Void> {
+
+        private BookTableDAO bookTableDAO;
+
+        public RemoveFavoriteBookAsyncTask(BookTableDAO bookTableDAO) {
+            this.bookTableDAO = bookTableDAO;
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            bookTableDAO.removeFavoriteBookByID(strings[0]);
+            return null;
+        }
+    }
+
+
+}
